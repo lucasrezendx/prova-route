@@ -5,13 +5,21 @@ import { Container, Typography, Paper, CircularProgress } from "@mui/material";
 function PostDetails() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Busca o post
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setPost(data);
+        // Busca o usuário do post
+        return fetch(`https://jsonplaceholder.typicode.com/users/${data.userId}`);
+      })
+      .then((res) => res.json())
+      .then((userData) => {
+        setUser(userData);
         setLoading(false);
       });
   }, [id]);
@@ -42,6 +50,18 @@ function PostDetails() {
         <Typography variant="caption" display="block" sx={{ mt: 2 }}>
           ID do post: {post.id}
         </Typography>
+        {user && (
+          <>
+            <Typography variant="h6" sx={{ mt: 3 }}>
+              Dados do Usuário
+            </Typography>
+            <Typography>Nome: {user.name}</Typography>
+            <Typography>Email: {user.email}</Typography>
+            <Typography>Username: {user.username}</Typography>
+            <Typography>Telefone: {user.phone}</Typography>
+            <Typography>Website: {user.website}</Typography>
+          </>
+        )}
       </Paper>
     </Container>
   );
