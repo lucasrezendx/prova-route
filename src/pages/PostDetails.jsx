@@ -10,10 +10,8 @@ import {
 
 function PostDetails() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [post, setPost] = useState(null);
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
@@ -27,7 +25,6 @@ function PostDetails() {
       .then((res) => res.json())
       .then((userData) => {
         setUser(userData);
-        setLoading(false);
       });
   }, [id]);
 

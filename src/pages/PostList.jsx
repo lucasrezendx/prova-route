@@ -7,7 +7,6 @@ import {
   Container,
   Paper,
   Divider,
-  CircularProgress,
 } from "@mui/material";
 
 function PostList() {
@@ -18,7 +17,6 @@ function PostList() {
       .then((res) => res.json())
       .then((data) => {
         setPosts(data);
-        setLoading(false);
       });
   }, []);
 
