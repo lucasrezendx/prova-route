@@ -7,7 +7,7 @@ function Header() {
     <AppBar position="static" color="primary" elevation={2}>
       <Toolbar>
         <Typography variant="h6" component="div">
-          Prova React - JSONPlaceholder
+          Prova Router - JSONPlaceholder
         </Typography>
       </Toolbar>
     </AppBar>

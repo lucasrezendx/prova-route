@@ -4,12 +4,9 @@ import {
   Container,
   Typography,
   Paper,
-  CircularProgress,
-  Button,
   Divider,
   Box,
 } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function PostDetails() {
   const { id } = useParams();
@@ -34,13 +31,6 @@ function PostDetails() {
       });
   }, [id]);
 
-  if (loading) {
-    return (
-      <Container maxWidth="sm" sx={{ mt: 4 }}>
-        <CircularProgress />
-      </Container>
-    );
-  }
 
   if (!post) {
     return (
@@ -52,14 +42,6 @@ function PostDetails() {
 
   return (
     <Container maxWidth="sm" sx={{ mt: 4 }}>
-      <Button
-        variant="outlined"
-        startIcon={<ArrowBackIcon />}
-        sx={{ mb: 2 }}
-        onClick={() => navigate("/post")}
-      >
-        Voltar
-      </Button>
       <Paper elevation={3} sx={{ p: 3 }}>
         <Typography variant="h4" gutterBottom color="primary">
           {post.title}

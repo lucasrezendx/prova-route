@@ -12,7 +12,6 @@ import {
 
 function PostList() {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
@@ -27,13 +26,7 @@ function PostList() {
     window.open(`/dados/${id}`, "_blank");
   };
 
-  if (loading) {
-    return (
-      <Container maxWidth="md" sx={{ mt: 4 }}>
-        <CircularProgress />
-      </Container>
-    );
-  }
+  
 
   return (
     <Container maxWidth="md" sx={{ mt: 4 }}>
